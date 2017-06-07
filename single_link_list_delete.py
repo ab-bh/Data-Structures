@@ -1,3 +1,5 @@
+#contributors: Huzaifa Faruqui, Abhishek Bhatt
+
 ## class to make a node 
 class Node:
     def __init__(self, data=None, next=None):
