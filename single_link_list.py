@@ -43,11 +43,15 @@ class SLL:
 		self.__init__()
 
 ## test run or above code
-
+# create an instance of the SLL class
 a = SLL()         
+
+# enter length of SLL
 for i in xrange(input()):
+    # insert to SLL
     a.insert(input())
 print '\n'
+# display the SLL
 print a
 
 '''
