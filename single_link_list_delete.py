@@ -1,4 +1,4 @@
-#contributors: Huzaifa Faruqui, Abhishek Bhatt
+#contributors: Mohd.Huzaifa Faruqui, Abhishek Bhatt
 
 ## class to make a node 
 class Node:
