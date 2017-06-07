@@ -88,3 +88,11 @@ a.insert_at_pos(5,2)
 print a
 a.Delete(3)
 print a
+
+
+'''
+Output:
+3->2->5->1
+3->2->5
+
+'''
