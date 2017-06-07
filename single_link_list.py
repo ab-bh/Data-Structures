@@ -1,3 +1,6 @@
+## Insert in the beginning of linked list
+
+## class to construct a node
 class node:
 	def __init__(self,data = None, next=None):
 		self.data = data
@@ -5,6 +8,7 @@ class node:
 	def __str__(self):
 		return ""
 
+## class to implement single link list
 class SLL:
 	def __init__(self):
 		self.low = None
@@ -16,13 +20,13 @@ class SLL:
 			self.hi = self.low
 		#when one element in linked list
 		elif self.hi == self.low:
-			self.hi = node(data,None)
+			self.low = node(data,None)
 			self.low.next = self.hi 
 		#else add new elements
 		else:
 			new = node(data,None)
-			self.hi.next = new
-			self.hi = new
+			new.next = self.low
+			self.low = new 
 	def __str__(self):
 		if self.low !=None:	
 			curr = self.low
@@ -38,34 +42,28 @@ class SLL:
 	def clear(self):
 		self.__init__()
 
-t = input()
-for i in xrange(t):
-    n = input()
-    if n==0:continue
-    a = SLL()
-    ls = map(int,raw_input().split())
-    for i in ls:
-        a.insert(i)
-    print a
-    a.clear()
+## test run or above code
+
+a = SLL()         
+for i in xrange(input()):
+    a.insert(input())
+print '\n'
+print a
+
 '''
-test input
-
-2
-0
-2
-1 2 
-3
-1 2 3 
-
-test output
-
-1
-2
+Test input
+5
 1
 2
 3
+4
+5
 
+Test output
+
+5
+4
+3
+2
+1
 '''
-    
-    
