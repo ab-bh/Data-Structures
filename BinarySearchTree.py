@@ -101,7 +101,7 @@ class BST(object):
 
 ## creating an instance for the BST
 bst = BST()
-root = None
+#root = None
 for tc in xrange(input("enter the number of values: ")):
 	val = input("\nval: ")
 	## for iterative approach
