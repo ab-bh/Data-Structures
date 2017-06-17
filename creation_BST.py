@@ -81,6 +81,19 @@ class BST(object):
 				else:
 					break
 			return current.data
+
+	def height_(self,root): ## the height driver function 
+	    if root == None:return 0
+	    else:
+	        max_left_subtree_height = self.height_(root.left)      
+	        max_right_subtree_height = self.height_(root.right)
+	        max_height = max(max_left_subtree_height, max_right_subtree_height)+1
+	        return max_height
+
+	## height of the first node is 0 not 1
+	def height(self):
+	    depth  = self.height_(self.root)
+	    return (depth-1)	
 	
 	def clear(self):
 		print "\n\nre-initializing\n"
@@ -100,10 +113,13 @@ bst.traverse()
 print "\n"
 
 ## displaying the max of the BST
-print "max: ",bst.find_max()
+print "\nmax: ",bst.find_max()
 
 ## displaying the min of the BST
-print "min: ",bst.find_min()
+print "\nmin: ",bst.find_min()
+
+## displaying the height of the BST
+print "\nheight: ",bst.height()
 
 ## reinitializing it
 bst.clear()
@@ -132,10 +148,16 @@ the node insertion path(from root):  right right right
 BST representation
 5 4 6 1 7 3 8 
 
-max: 8
-min: 1
+
+max:  8
+
+min:  1
+
+height:  3
+
 
 re-initializing
+
 
 
 '''
