@@ -49,7 +49,7 @@ class BST(object):
 	def traverse(self): ## level order traversals 
 		nodes = []
 		nodes.append(self.root)
-		print "\nBST representation"
+		print "\n\nBST representation"
 		while nodes:
 			current = nodes.pop(0)
 			print current.data,
@@ -95,13 +95,70 @@ class BST(object):
 	    depth  = self.height_(self.root)
 	    return (depth-1)	
 	
+
+	def search(self,val):
+		if self.root is None: return False
+		else:
+			current = self.root
+			while True:
+				if val<current.data:
+					if current.left:
+						current = current.left
+					else:break
+				elif val>current.data:
+					if current.right:
+						current = current.right
+					else:break
+				if val==current.data:
+					return True
+			return False
+
+	def get_node_path(self,val):
+		if self.search(val):
+			path = []
+			current = self.root
+			while True:
+				if current is None:
+					break
+				else:
+					if val == current.data:
+						path.append(current.data);break
+					elif val<current.data:
+						if current.left:
+							path.append(current.data);current=current.left
+						else:
+							break
+					elif val>current.data:
+						if current.right:
+							path.append(current.data);current = current.right
+						else:
+							break
+			return path
+		return None
+	
+	def LCA(self,val1,val2):
+		path1 = self.get_node_path(val1)
+		path2 = self.get_node_path(val2)
+		try:
+			store = None
+			if len(path1) != len(path2):
+				min_list = min(path1,path2,key=len)
+				max_list = max(path1,path2,key=len)
+			min_list, max_list = path1,path2
+			for lca1 in min_list:
+				for lca2 in max_list:
+					if lca1 == lca2: store = lca1
+			return store
+		except:
+			return None
+	
 	def clear(self):
 		print "\n\nre-initializing\n"
 		self.__init__()
 
 ## creating an instance for the BST
 bst = BST()
-#root = None
+root = None
 for tc in xrange(input("enter the number of values: ")):
 	val = input("\nval: ")
 	## for iterative approach
@@ -120,6 +177,21 @@ print "\nmin: ",bst.find_min()
 
 ## displaying the height of the BST
 print "\nheight: ",bst.height()
+
+## searching if node with specific value exists or not
+print "\nnode exists? ", bst.search(7)
+print "\nnode exists? ", bst.search(9) 
+
+## getting the path of  some node val if it exists in BST
+print "\npath to node(if exists): ", bst.get_node_path(3)
+
+print "\npath to node(if exists): ", bst.get_node_path(9)
+
+## finding the lowest common ancestor if exists
+
+print "\nLCA(if exists): ", bst.LCA(1,6)
+
+print "\nLCA(if exists): ", bst.LCA(1,9)
 
 ## reinitializing it
 bst.clear()
@@ -145,6 +217,7 @@ val: 3
 the node insertion path(from root):  left left right 
 val: 8
 the node insertion path(from root):  right right right 
+
 BST representation
 5 4 6 1 7 3 8 
 
@@ -155,9 +228,19 @@ min:  1
 
 height:  3
 
+node exists?  True
+
+node exists?  False
+
+path to node(if exists):  [5, 4, 1, 3]
+
+path to node(if exists):  None
+
+LCA(if exists):  5
+
+LCA(if exists):  None
+
 
 re-initializing
-
-
 
 '''
