@@ -151,6 +151,44 @@ class BST(object):
 			return store
 		except:
 			return None
+
+	def successor(self,root):
+		current = root.right
+		while True:
+			if current.left:
+				current = current.left
+			else:
+				break
+		return current
+
+	def Delete(self,root,val): ## driver function for delettion
+ 		if root is None:
+			return None
+		else:
+			if val<root.data:
+				root.left = self.Delete(root.left, val)
+			elif val>root.data:
+				root.right = self.Delete(root.right, val)
+			else:
+				if not root.left:
+					right = root.right
+					del root
+					return right
+				if not root.right:
+					left = root.left
+					del root
+					return left
+				else:
+					successor = self.successor(root)
+					root.data = successor.data
+					root.right = self.Delete(root.right, successor.data)
+		return root
+
+	def delete(self,val):
+		if self.search(val):
+			self.root = self.Delete(self.root, val)
+		else:
+			return "error"
 	
 	def clear(self):
 		print "\n\nre-initializing\n"
@@ -192,6 +230,31 @@ print "\npath to node(if exists): ", bst.get_node_path(9)
 print "\nLCA(if exists): ", bst.LCA(1,6)
 
 print "\nLCA(if exists): ", bst.LCA(1,9)
+'''
+ deleting a node(if exists) 
+ [uncomment each individually to see the result (for
+ demonstration i showed each deletion at same time in example belw to just give
+ an idea how it would look)]
+'''
+print "deletion\n"
+
+## leaf node
+
+bst.delete(3)
+print "leaf node deletion:"
+bst.traverse()
+
+## node ith one child
+
+#bst.delete(1)
+#print "node with one child deletion:"
+#bst.traverse()
+
+## node with two children
+
+#bst.delete(5)
+#print "node with 2 children deletion:"
+#bst.traverse()
 
 ## reinitializing it
 bst.clear()
@@ -239,6 +302,28 @@ path to node(if exists):  None
 LCA(if exists):  5
 
 LCA(if exists):  None
+
+leaf node deletion:
+
+
+BST representation
+5 4 6 1 7 8 
+
+node with one child deletion:
+
+
+BST representation
+5 4 6 3 7 8 
+
+
+node with 2 children deletion:
+
+
+BST representation
+6 4 7 1 8 3 
+
+
+
 
 
 re-initializing
