@@ -1,3 +1,21 @@
+## BST operation functionalities
+## Author: Abhishek Bhatt
+## Jamia Millia Islamia
+## functionalities included are:
+'''
+
+*insert node
+*delete node
+*find successor of a node
+*find minimum in BST
+*find maximum in BST
+*traverse in BST(level order traversal)
+*find height of the BST
+*search in BST
+*get node path in BST
+*find Lowest Common Ancestor in BST(LCA)
+'''
+
 ## class for node creation
 class Node(object):
 	def __init__(self,data = None):
