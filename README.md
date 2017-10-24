@@ -1,2 +1,2 @@
 # Data-Structures
-Basic Data Structures implementations
+Basic Data Structures implementations.
